@@ -53,24 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Validación de captcha simple
-function validateCaptcha(id) {
-    const input = document.getElementById(id);
-    const value = parseInt(input.value);
-
-    // Captcha 1: 3 + 4 = 7
-    if (id === 'captcha1' && value !== 7) {
-        alert('Respuesta de seguridad incorrecta (3 + 4). Por favor, inténtalo de nuevo.');
-        input.focus();
+// Validación de captcha (Google reCAPTCHA)
+function validateCaptcha(captchaId) {
+    const response = grecaptcha.getResponse();
+    if (response.length === 0) {
+        alert('Por favor, completa el reCAPTCHA para demostrar que no eres un robot.');
         return false;
     }
-
-    // Captcha 2: 5 + 2 = 7
-    if (id === 'captcha2' && value !== 7) {
-        alert('Respuesta de seguridad incorrecta (5 + 2). Por favor, inténtalo de nuevo.');
-        input.focus();
-        return false;
-    }
-
     return true;
 }
