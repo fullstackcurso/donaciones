@@ -53,8 +53,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Validación de captcha (Google reCAPTCHA v3)
+// Validación de captcha (Matemático + Google reCAPTCHA v3)
 async function validateCaptcha(formId) {
+    // 1. Validación matemática manual
+    const captchaInput1 = document.getElementById('captcha1');
+    const captchaInput2 = document.getElementById('captcha2');
+
+    if (formId === 'confirmar') {
+        if (parseInt(captchaInput1.value) !== 7) {
+            alert('Respuesta de seguridad incorrecta (3 + 4).');
+            captchaInput1.focus();
+            return false;
+        }
+    } else if (formId === 'mensaje') {
+        if (parseInt(captchaInput2.value) !== 7) {
+            alert('Respuesta de seguridad incorrecta (5 + 2).');
+            captchaInput2.focus();
+            return false;
+        }
+    }
+
+    // 2. Validación invisible de Google
     return new Promise((resolve) => {
         grecaptcha.ready(function () {
             grecaptcha.execute('6LcasTssAAAAANA_M6d1L7kJmY4_Dt5QU6ZKnie4', { action: 'submit' }).then(function (token) {
