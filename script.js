@@ -53,12 +53,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Validación de captcha (Google reCAPTCHA)
-function validateCaptcha(captchaId) {
-    const response = grecaptcha.getResponse();
-    if (response.length === 0) {
-        alert('Por favor, completa el reCAPTCHA para demostrar que no eres un robot.');
-        return false;
-    }
-    return true;
+// Validación de captcha (Google reCAPTCHA v3)
+async function validateCaptcha(formId) {
+    return new Promise((resolve) => {
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LcasTssAAAAANA_M6d1L7kJmY4_Dt5QU6ZKnie4', { action: 'submit' }).then(function (token) {
+                // Añadir el token al formulario antes de enviar
+                const form = document.querySelector(`#${formId} .confirm-form`) || document.getElementById(formId).querySelector('form');
+                let input = form.querySelector('input[name="g-recaptcha-response"]');
+                if (!input) {
+                    input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'g-recaptcha-response';
+                    form.appendChild(input);
+                }
+                input.value = token;
+                resolve(true);
+            });
+        });
+    });
 }
+
+// Interceptar envíos de formulario para manejar validación asíncrona
+document.addEventListener('DOMContentLoaded', () => {
+    const forms = document.querySelectorAll('.confirm-form');
+    forms.forEach(form => {
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const isValid = await validateCaptcha(form.closest('section').id);
+            if (isValid) {
+                form.submit();
+            }
+        };
+    });
+});
