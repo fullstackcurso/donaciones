@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donaciones | Apoya mis Proyectos</title>
+    <link rel="icon" type="image/png" href="https://cryptologos.cc/logos/solana-sol-logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -52,6 +53,7 @@
 
                 <div class="cta-buttons">
                     <a href="#guia" class="btn primary">¿Cómo donar en Crypto?</a>
+                    <a href="#confirmar" class="btn secondary">Confirmar Donación</a>
                 </div>
             </div>
 
@@ -89,6 +91,31 @@
                     <p>Copia mi dirección de arriba, pégala en el botón "Send" de tu wallet, elige el monto y confirma.
                         ¡Listo!</p>
                 </div>
+            </div>
+        </section>
+        <section id="confirmar" class="confirm-section">
+            <div class="confirm-container">
+                <h2>¿Has realizado una donación?</h2>
+                <p>Las transacciones en la red Solana son seudónimas. Si quieres que sepa quién eres para agradecerte el
+                    apoyo, por favor rellena este formulario o añade tu nombre en el campo <strong>"Memo"</strong> de tu
+                    wallet al enviar.</p>
+
+                <form class="confirm-form" action="https://formspree.io/f/tu-id-aqui" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nombre o Alias</label>
+                        <input type="text" id="name" name="name" placeholder="Tu nombre o @usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txid">ID de Transacción (opcional)</label>
+                        <input type="text" id="txid" name="txid" placeholder="Firma de la transacción (Signature)">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="3"
+                            placeholder="Algo que quieras decirme..."></textarea>
+                    </div>
+                    <button type="submit" class="btn primary full-width">Enviar Confirmación</button>
+                </form>
             </div>
         </section>
     </main>
