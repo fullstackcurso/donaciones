@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donaciones | Contribuye al Cambio</title>
+    <title>Donaciones | Apoya el Código Abierto</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
     <header>
         <nav>
-            <div class="logo">Donaciones<span>.</span></div>
+            <div class="logo">SolDonaciones<span>.</span></div>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#guia">Guía Crypto</a></li>
+                <li><a href="https://github.com/fullstackcurso" target="_blank" class="btn-nav">Mis Proyectos</a></li>
             </ul>
         </nav>
     </header>
@@ -24,53 +25,84 @@
     <main>
         <section id="inicio" class="hero">
             <div class="hero-content">
-                <h1>Tu pequeña acción, <br><span>su gran cambio.</span></h1>
-                <p>Únete a nuestra plataforma de donaciones y ayuda a transformar vidas en todo el mundo con un solo
-                    clic.</p>
+                <h1>Apoya mis <br><span>proyectos open-source.</span></h1>
+                <p>Con tu donación me ayudas a poder dedicar más tiempo a crear herramientas y cursos gratuitos para la
+                    comunidad.</p>
+
+                <div class="wallet-container">
+                    <div class="wallet-header">
+                        <span class="network-badge">Red Solana (SOL, USDC)</span>
+                    </div>
+                    <div class="wallet-address-box">
+                        <code id="wallet-address">Dk6y5t1vsypgSW1dQjjVe9wFzrsP2KDvid7PdSN1TUDN</code>
+                        <button onclick="copyWallet()" class="copy-btn" title="Copiar dirección">
+                            <i data-lucide="copy"></i>
+                        </button>
+                    </div>
+                    <p class="wallet-footer">fullstackcurso</p>
+                </div>
+
                 <div class="cta-buttons">
-                    <a href="#donar" class="btn primary">Donar Ahora</a>
-                    <a href="#saber-mas" class="btn secondary">Saber Más</a>
+                    <a href="#guia" class="btn primary">¿Cómo donar en Crypto?</a>
                 </div>
             </div>
+
             <div class="hero-image">
-                <div class="glass-card">
-                    <h3>Total Recaudado</h3>
-                    <div class="counter" id="total-amount">€25,430</div>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%;"></div>
+                <div class="solana-card">
+                    <div class="solana-logo">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana Logo">
                     </div>
-                    <p>75% del objetivo mensual</p>
+                    <div class="solana-info">
+                        <h3>Impacto Directo</h3>
+                        <p>Las donaciones en Solana son instantáneas y con comisiones casi nulas.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="donar" class="donation-section">
-            <h2>Elige tu impacto</h2>
-            <div class="donation-grid">
-                <div class="card">
-                    <h3>Educación</h3>
-                    <p>Proporciona materiales escolares a niños en comunidades rurales.</p>
-                    <button class="btn-select">€10</button>
+        <section id="guia" class="guide-section">
+            <h2>Guía para Donar en Solana</h2>
+            <div class="guide-grid">
+                <div class="guide-step">
+                    <div class="step-num">1</div>
+                    <h3>Crea tu Wallet</h3>
+                    <p>Descarga <strong>Phantom</strong> o <strong>Jupiter Wallet</strong> como extensión de navegador o
+                        app móvil.</p>
+                    <div class="step-links">
+                        <a href="https://phantom.app/" target="_blank">Phantom</a>
+                        <a href="https://jup.ag/wallet" target="_blank">Jupiter</a>
+                    </div>
                 </div>
-                <div class="card featured">
-                    <h3>Salud</h3>
-                    <p>Ayuda a financiar clínicas móviles y suministros médicos esenciales.</p>
-                    <button class="btn-select">€25</button>
+                <div class="guide-step">
+                    <div class="step-num">2</div>
+                    <h3>Configura tu cuenta</h3>
+                    <p>Sigue los pasos para crear una nueva wallet. <strong>Guarda tu Frase Semilla</strong> en un lugar
+                        seguro y físico. ¡Nunca la compartas!</p>
                 </div>
-                <div class="card">
-                    <h3>Alimentación</h3>
-                    <p>Garantiza comidas nutritivas para familias en situación de riesgo.</p>
-                    <button class="btn-select">€50</button>
+                <div class="guide-step">
+                    <div class="step-num">3</div>
+                    <h3>Añade fondos (SOL)</h3>
+                    <p>Compra SOL en un exchange (Binance, Coinbase, Kraken) o directamente desde la wallet y envíalos a
+                        tu dirección.</p>
+                </div>
+                <div class="guide-step">
+                    <div class="step-num">4</div>
+                    <h3>Envía la donación</h3>
+                    <p>Copia mi dirección de arriba, pégala en el botón "Send" de tu wallet, elige el monto y confirma.
+                        ¡Listo!</p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Donaciones. Todos los derechos reservados.</p>
+        <p>&copy; 2025 fullstackcurso. Todos los derechos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

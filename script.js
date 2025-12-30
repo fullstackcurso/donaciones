@@ -1,37 +1,54 @@
-// Interactividad básica para la landing de donaciones
+function copyWallet() {
+    const address = document.getElementById('wallet-address').textContent;
+    navigator.clipboard.writeText(address).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalIcon = btn.innerHTML;
+        
+        // Cambiar icono temporalmente
+        btn.innerHTML = '<i data-lucide="check" style="color: #14F195"></i>';
+        lucide.createIcons();
+        
+        setTimeout(() => {
+            btn.innerHTML = originalIcon;
+            lucide.createIcons();
+        }, 2000);
+        
+        // Opcional: Notificación visual
+        console.log('Copiado: ' + address);
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.btn-select');
-    
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const amount = button.textContent;
-            alert(`¡Gracias por elegir donar ${amount}! Serás redirigido a la pasarela de pago.`);
-            
-            // Simulación de interacción
-            button.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 100);
-        });
-    });
-
-    // Efecto suave al hacer scroll
+    // Scroll suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
-    // Animación simple para el contador (simulada)
-    let count = 25430;
-    const counterElement = document.getElementById('total-amount');
-    
-    setInterval(() => {
-        count += Math.floor(Math.random() * 5);
-        counterElement.textContent = `€${count.toLocaleString()}`;
-    }, 3000);
+    // Revelar elementos al hacer scroll (opcional)
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.guide-step').forEach(step => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(20px)';
+        step.style.transition = 'all 0.6s ease-out';
+        observer.observe(step);
+    });
 });
