@@ -80,9 +80,30 @@ document.addEventListener('DOMContentLoaded', () => {
     forms.forEach(form => {
         form.onsubmit = async (e) => {
             e.preventDefault();
-            const isValid = await validateCaptcha(form.closest('section').id);
-            if (isValid) {
-                form.submit();
+
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+
+            // Feedback visual
+            btn.innerText = 'Verificando...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            try {
+                const isValid = await validateCaptcha(form.closest('section').id);
+                if (isValid) {
+                    form.submit();
+                } else {
+                    btn.innerText = originalText;
+                    btn.style.opacity = '1';
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                console.error('Error en reCAPTCHA:', error);
+                btn.innerText = originalText;
+                btn.style.opacity = '1';
+                btn.disabled = false;
+                alert('Hubo un error con la verificación de seguridad. Por favor, recarga la página.');
             }
         };
     });
