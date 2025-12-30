@@ -3,16 +3,16 @@ function copyWallet() {
     navigator.clipboard.writeText(address).then(() => {
         const btn = document.querySelector('.copy-btn');
         const originalIcon = btn.innerHTML;
-        
+
         // Cambiar icono temporalmente
         btn.innerHTML = '<i data-lucide="check" style="color: #14F195"></i>';
         lucide.createIcons();
-        
+
         setTimeout(() => {
             btn.innerHTML = originalIcon;
             lucide.createIcons();
         }, 2000);
-        
+
         // Opcional: Notificación visual
         console.log('Copiado: ' + address);
     });
@@ -52,3 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(step);
     });
 });
+
+// Validación de captcha simple
+function validateCaptcha(id) {
+    const input = document.getElementById(id);
+    const value = parseInt(input.value);
+
+    // Captcha 1: 3 + 4 = 7
+    if (id === 'captcha1' && value !== 7) {
+        alert('Respuesta de seguridad incorrecta (3 + 4). Por favor, inténtalo de nuevo.');
+        input.focus();
+        return false;
+    }
+
+    // Captcha 2: 5 + 2 = 7
+    if (id === 'captcha2' && value !== 7) {
+        alert('Respuesta de seguridad incorrecta (5 + 2). Por favor, inténtalo de nuevo.');
+        input.focus();
+        return false;
+    }
+
+    return true;
+}
