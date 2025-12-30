@@ -1,6 +1,6 @@
 # Donaciones
 
-Este es un proyecto para gestionar donaciones, desarrollado con la ayuda de Antigravity.
+Este es un proyecto para gestionar donaciones.
 
 ## Características
 - Interfaz moderna y minimalista.
