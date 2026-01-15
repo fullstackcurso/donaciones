@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Apoya el desarrollo open source de fullstackcurso con donaciones en Solana. Rápido, seguro y directo.">
+    <meta name="theme-color" content="#0b0e14">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fullstackcurso.github.io/donaciones/">
+    <meta property="og:title" content="Donaciones | Apoya estos Proyectos">
+    <meta property="og:description"
+        content="Si este proyecto te ha sido útil, invítame a un café. Tu apoyo mantiene el desarrollo activo.">
+    <meta property="og:image" content="https://cryptologos.cc/logos/solana-sol-logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Donaciones | Apoya estos Proyectos">
+    <meta property="twitter:description" content="Apoya el desarrollo open source. Donaciones en Solana.">
+
+    <title data-i18n="page_title">Donaciones | Apoya estos Proyectos</title>
+    <link rel="canonical" href="https://fullstackcurso.github.io/donaciones/">
+    <link rel="icon" type="image/png" href="https://cryptologos.cc/logos/solana-sol-logo.png">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcasTssAAAAANA_M6d1L7kJmY4_Dt5QU6ZKnie4"
+        defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Donaciones<span>.</span></div>
+
+            <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <nav id="main-nav" aria-label="Menú principal">
+                <ul>
+                    <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="#guia" data-i18n="nav_guide">Guía Solana</a></li>
+                    <li><a href="https://github.com/fullstackcurso" target="_blank" rel="noopener noreferrer"
+                            class="btn-nav" data-i18n="nav_projects">Proyectos</a></li>
+                    <li>
+                        <button id="lang-toggle" class="lang-btn" aria-label="Cambiar idioma / Switch language">
+                            <span class="lang-text">EN</span> <i data-lucide="languages" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
+                <button id="menu-close" class="menu-close" aria-label="Cerrar menú">
+                    <i data-lucide="x"></i>
+                </button>
+            </nav>
+            <div class="overlay" id="nav-overlay"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1 data-i18n="hero_title">Apoya estos <br><span>proyectos.</span></h1>
+                <p data-i18n="hero_desc">Si este proyecto te ha sido útil, invítame a un café ☕. Esto ayuda a mantener
+                    el desarrollo activo y a dedicar más horas.</p>
+
+                <div class="solana-card">
+                    <div class="solana-logo">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Logotipo de Solana" width="60"
+                            height="60">
+                    </div>
+                    <div class="solana-info">
+                        <p data-i18n="solana_info">Las donaciones en Solana son instantáneas y con comisiones casi
+                            nulas.</p>
+                    </div>
+                </div>
+
+                <div class="wallet-container">
+                    <div class="wallet-header">
+                        <span class="network-badge" data-i18n="network_badge">Red Solana (SOL, USDC, etc.)</span>
+                    </div>
+                    <div class="wallet-address-box">
+                        <code id="wallet-address"
+                            title="Dirección de Wallet">Dk6y5t1vsypgSW1dQjjVe9wFzrsP2KDvid7PdSN1TUDN</code>
+                        <button id="copy-btn" class="copy-btn" title="Copiar dirección"
+                            aria-label="Copiar dirección de wallet" data-i18n-title="copy_tooltip">
+                            <i data-lucide="copy" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <p class="wallet-footer">https://github.com/fullstackcurso | RubenSDFA1labernt</p>
+                    <p class="donation-note" data-i18n="donation_note">Parte de las donaciones se destinará a proyectos
+                        de código abierto impulsados por la comunidad y sin ánimo de lucro, como Kodi. Sin ellos, muchos
+                        de estos proyectos no serían posibles. Se publicarán pruebas de ello.</p>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#guia" class="btn primary" data-i18n="btn_how_to">¿Cómo donar con Solana?</a>
+                    <a href="#confirmar" class="btn secondary" data-i18n="btn_confirm">Confirmar Donación</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="guia" class="guide-section" aria-labelledby="guide-title">
+            <h2 id="guide-title" data-i18n="guide_title">Guía para Donar en Solana</h2>
+            <div class="guide-grid">
+                <article class="guide-step">
+                    <div class="step-num" aria-hidden="true">1</div>
+                    <h3 data-i18n="step1_title">Crea tu Wallet</h3>
+                    <p data-i18n="step1_desc">Descarga <strong>Phantom</strong> o <strong>Jupiter Wallet</strong>.</p>
+                    <div class="step-links">
+                        <a href="https://phantom.app/" target="_blank" rel="noopener noreferrer">Phantom</a>
+                        <a href="https://jup.ag/" target="_blank" rel="noopener noreferrer">Jupiter</a>
+                    </div>
+                </article>
+                <article class="guide-step">
+                    <div class="step-num" aria-hidden="true">2</div>
+                    <h3 data-i18n="step2_title">Configura tu cuenta</h3>
+                    <p data-i18n="step2_desc">Guarda tu Frase Semilla en lugar seguro.</p>
+                </article>
+                <article class="guide-step">
+                    <div class="step-num" aria-hidden="true">3</div>
+                    <h3 data-i18n="step3_title">Añade fondos (SOL)</h3>
+                    <p data-i18n="step3_desc">Compra SOL y envíalos a tu dirección.</p>
+                </article>
+                <article class="guide-step">
+                    <div class="step-num" aria-hidden="true">4</div>
+                    <h3 data-i18n="step4_title">Envía la donación</h3>
+                    <p data-i18n="step4_desc">Copia mi dirección de arriba, pégala en el botón "Send" de tu wallet,
+                        elige el monto y confirma. ¡Listo!</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="confirmar" class="confirm-section" aria-labelledby="confirm-title">
+            <div class="confirm-container">
+                <h2 id="confirm-title" data-i18n="form_title">¿Has realizado una donación?</h2>
+                <p data-i18n="form_desc">Las transacciones en la red Solana son seudónimas. Si quieres que sepa quién
+                    eres para agradecerte el apoyo, por favor rellena este formulario o añade tu nombre en el campo
+                    <strong>"Memo"</strong> de tu wallet al enviar.
+                </p>
+
+                <form class="confirm-form" action="https://formspree.io/f/mregwjzw" method="POST">
+                    <div class="form-group">
+                        <label for="name" data-i18n="label_name">Nombre o Alias</label>
+                        <input type="text" id="name" name="name" data-i18n-placeholder="place_name"
+                            placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-i18n="label_email">Tu Email (opcional)</label>
+                        <input type="email" id="email" name="email" data-i18n-placeholder="place_email"
+                            placeholder="email@ejemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="txid" data-i18n="label_txid">ID de Transacción</label>
+                        <input type="text" id="txid" name="txid" data-i18n-placeholder="place_txid"
+                            placeholder="Signature">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-i18n="label_message">Mensaje</label>
+                        <textarea id="message" name="message" rows="3" data-i18n-placeholder="place_message"
+                            placeholder="Mensaje..."></textarea>
+                    </div>
+
+                    <div class="form-group-row">
+                        <input type="checkbox" id="confirm1" required>
+                        <label for="confirm1" data-i18n="label_check_correct">Confirmo que los datos son
+                            correctos</label>
+                    </div>
+
+                    <div class="form-group captcha-group">
+                        <label for="captcha1" data-i18n="label_captcha1">Seguridad: ¿Cuánto es 3 + 4?</label>
+                        <input type="number" id="captcha1" data-i18n-placeholder="place_captcha" required>
+                    </div>
+
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1">
+                    <button type="submit" class="btn primary full-width" data-i18n="btn_send_confirm">Enviar
+                        Confirmación</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="mensaje" class="confirm-section" aria-labelledby="msg-title">
+            <div class="confirm-container">
+                <h2 id="msg-title" data-i18n="msg_form_title">¿No has donado pero quieres dejar un mensaje?</h2>
+                <p data-i18n="msg_form_desc">Tu opinión y tus palabras también son una forma de apoyo. ¡Me encantará
+                    leerte!</p>
+
+                <form class="confirm-form" action="https://formspree.io/f/mregwjzw" method="POST">
+                    <div class="form-group">
+                        <label for="name2" data-i18n="label_name">Nombre o Alias</label>
+                        <input type="text" id="name2" name="name" data-i18n-placeholder="place_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email2" data-i18n="label_email">Tu Email</label>
+                        <input type="email" id="email2" name="email" data-i18n-placeholder="place_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message2" data-i18n="label_message">Mensaje</label>
+                        <textarea id="message2" name="message" rows="3"
+                            data-i18n-placeholder="place_message_only"></textarea>
+                    </div>
+
+                    <div class="form-group-row">
+                        <input type="checkbox" id="confirm2" required>
+                        <label for="confirm2" data-i18n="label_check_msg">Confirmo el envío</label>
+                    </div>
+
+                    <div class="form-group captcha-group">
+                        <label for="captcha2" data-i18n="label_captcha2">Seguridad: ¿Cuánto es 5 + 2?</label>
+                        <input type="number" id="captcha2" data-i18n-placeholder="place_captcha" required>
+                    </div>
+
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1">
+                    <button type="submit" class="btn primary full-width" data-i18n="btn_send_msg">Enviar
+                        Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer">&copy; 2025 fullstackcurso.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
