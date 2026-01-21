@@ -21,9 +21,9 @@ const App = (() => {
                 nav_home: "Inicio",
                 nav_guide: "Guía Solana",
                 nav_projects: "Proyectos",
-                hero_title: "Apoya estos <br><span>proyectos.</span>",
-                hero_desc: "Si algo te ha sido útil, invítame a un café ☕. Esto ayuda a mantener el desarrollo activo y a dedicar más horas.",
-                solana_info: "Se usa Solana para que las micro-donaciones tengan sentido. Las pasarelas tradicionales cobran comisiones que reducen drásticamente las aportaciones pequeñas; aquí, casi el 100% de tu ayuda llega al proyecto.",
+                hero_title: "Estos proyectos son posibles <br><span>gracias al apoyo de la comunidad.</span>",
+                hero_desc: "Si algún proyecto te ha resultado útil, puedes invitarme a un café ☕<br>Es una forma de ayudar que me permite dedicar más horas a mis aficiones, además de cubrir costes y seguir manteniendo y mejorando estas herramientas.",
+                solana_info: "<strong>No soy inversor ni me dedico a las criptomonedas.</strong> Simplemente uso Solana por eficiencia: las pasarelas tradicionales cobran comisiones que hacen inviables las donaciones pequeñas (micro-pagos). Aquí, casi el 100% de tu ayuda llega al proyecto.",
                 network_badge: "Red Solana (SOL, USDC, etc.)",
                 copy_tooltip: "Copiar dirección",
                 donation_note: "Parte de las donaciones se destinará a proyectos de código abierto impulsados por la comunidad y sin ánimo de lucro, como Kodi. Sin ellos, muchos de estos proyectos no serían posibles. Se publicarán pruebas de ello.",
@@ -70,9 +70,9 @@ const App = (() => {
                 nav_home: "Home",
                 nav_guide: "Solana Guide",
                 nav_projects: "Projects",
-                hero_title: "Support these <br><span>projects.</span>",
-                hero_desc: "If something has been useful, buy me a coffee ☕. Helps keep development active.",
-                solana_info: "Solana is used to make micro-donations make sense. Traditional gateways charge fees that drastically reduce small contributions; here, almost 100% of your support reaches the project.",
+                hero_title: "These projects are made possible <br><span>thanks to community support.</span>",
+                hero_desc: "If any project has been useful to you, you can buy me a coffee ☕<br>Your support helps me dedicate more time to these hobbies, cover costs, and keep maintaining and improving these tools for everyone.",
+                solana_info: "<strong>I am not an investor or crypto trader.</strong> I simply use Solana for efficiency: traditional gateways charge fees that make small donations (micro-payments) unviable. Here, almost 100% of your support reaches the project.",
                 network_badge: "Solana Network (SOL, USDC, etc.)",
                 copy_tooltip: "Copy address",
                 donation_note: "Part of the donations will go to community-driven, non-profit open source projects like Kodi. Without them, many of these projects would not be possible. Proof of this will be published.",
@@ -376,4 +376,5 @@ const App = (() => {
 })();
 
 // Initialize App when DOM is ready
+
 document.addEventListener('DOMContentLoaded', App.init);
