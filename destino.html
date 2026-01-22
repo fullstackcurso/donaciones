@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Transparencia total: conoce el destino de las donaciones y cómo apoyan proyectos open source.">
+    <meta name="theme-color" content="#0b0e14">
+
+    <title data-i18n="destiny_page_title">Destino de los Fondos | Donaciones</title>
+    <link rel="canonical" href="https://fullstackcurso.github.io/donaciones/destino.html">
+    <link rel="icon" type="image/png" href="https://cryptologos.cc/logos/solana-sol-logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Donaciones<span>.</span></a>
+
+            <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <nav id="main-nav" aria-label="Menú principal">
+                <ul>
+                    <li><a href="index.html" data-i18n="nav_home">Inicio</a></li>
+                    <li><a href="destino.html" data-i18n="nav_destiny">Destino</a></li>
+                    <li><a href="index.html#guia" data-i18n="nav_guide">Guía Solana</a></li>
+                    <li><a href="https://github.com/fullstackcurso" target="_blank" rel="noopener noreferrer"
+                            class="btn-nav" data-i18n="nav_projects">Proyectos</a></li>
+                    <li>
+                        <button id="lang-toggle" class="lang-btn" aria-label="Cambiar idioma / Switch language">
+                            <span class="lang-text">EN</span> <i data-lucide="languages" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
+                <button id="menu-close" class="menu-close" aria-label="Cerrar menú">
+                    <i data-lucide="x"></i>
+                </button>
+            </nav>
+            <div class="overlay" id="nav-overlay"></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="destiny-hero">
+            <div class="destiny-content">
+                <h1 data-i18n="destiny_title">Destino de los <span>Fondos</span></h1>
+                <p class="destiny-subtitle" data-i18n="destiny_subtitle">Cada aporte cuenta, y aquí puedes ver cómo se
+                    usa.</p>
+            </div>
+        </section>
+
+        <!-- Manifiesto / Filosofía -->
+        <section class="manifesto-section">
+            <div class="manifesto-container">
+                <div class="manifesto-icon">
+                    <i data-lucide="heart-handshake"></i>
+                </div>
+                <h2 data-i18n="manifesto_title">Antes de nada, quiero ser claro</h2>
+
+                <div class="manifesto-content">
+                    <p data-i18n="manifesto_p1">Trabajo como autónomo desarrollando aplicaciones y páginas web para
+                        empresas. Ese es mi sustento. Estos proyectos personales son mi hobby, no mi negocio.</p>
+
+                    <p data-i18n="manifesto_p2">Durante años he creado herramientas gratuitas, sin publicidad ni ningún
+                        tipo de monetización. No pretendo vivir de esto ni hacerme rico con donaciones. En la mayoría de
+                        proyectos, las donaciones se pueden contar con los dedos de las manos; en el mejor de los casos,
+                        han cubierto los costes de hosting y dominio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Destino de los fondos -->
+        <section class="destiny-section">
+            <h2 data-i18n="destiny_use_title">¿En qué se usarán las donaciones?</h2>
+            <div class="destiny-container">
+
+                <article class="destiny-card">
+                    <div class="destiny-icon">
+                        <i data-lucide="server"></i>
+                    </div>
+                    <h3 data-i18n="dest_infra_title">Infraestructura y Costes</h3>
+                    <p data-i18n="dest_infra_desc">Dominios, hosting, servicios cloud y otras cosas necesarias para
+                        mantener los proyectos activos y accesibles.</p>
+                </article>
+
+                <article class="destiny-card">
+                    <div class="destiny-icon">
+                        <i data-lucide="code-2"></i>
+                    </div>
+                    <h3 data-i18n="dest_opensource_title">Proyectos Open Source</h3>
+                    <p data-i18n="dest_opensource_desc">Parte de las donaciones se destinará a proyectos de código
+                        abierto impulsados por la comunidad y sin ánimo de lucro, como Kodi. Sin ellos, muchos de estos
+                        proyectos no serían posibles. Se publicarán pruebas de ello.</p>
+
+                    <button class="details-toggle" onclick="this.parentElement.classList.toggle('expanded')">
+                        <span data-i18n="btn_more_details">Más detalles</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="details-content">
+                        <p data-i18n="dest_opensource_extra">Además de donaciones directas, también se destinará parte a
+                            comprar merchandising oficial de estos proyectos (camisetas, tazas, etc.). De esta forma,
+                            apoyo su trabajo mientras cubro necesidades básicas como ropa. Dos pájaros de un tiro.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="destiny-card">
+                    <div class="destiny-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h3 data-i18n="dest_time_title">Tiempo y Dedicación</h3>
+                    <p data-i18n="dest_time_desc">Tu café me permite dedicar más horas a desarrollar, mantener y mejorar
+                        estas herramientas gratuitas para toda la comunidad. Y con suerte, tener que dedicar menos
+                        tiempo a ganar dinero para vivir y más a estos hobbies.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Planes futuros -->
+        <section class="future-section">
+            <div class="future-container">
+                <div class="future-icon">
+                    <i data-lucide="rocket"></i>
+                </div>
+                <h2 data-i18n="future_title">Planes futuros</h2>
+                <ul class="future-list">
+                    <li data-i18n="future_p1">Se planea crear un foro para dudas y compartir archivos que requerirá una
+                        base de datos muy grande y mejor infraestructura.</li>
+                    <li data-i18n="future_p2">Si en algún momento hay más colaboradores en el proyecto, los fondos se
+                        repartirán de forma justa entre todos.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Pruebas -->
+        <section class="destiny-proof">
+            <div class="proof-container">
+                <h2 data-i18n="proof_title">Capturas y Fotografías</h2>
+                <p data-i18n="proof_desc">Próximamente se publicarán aquí los comprobantes de las donaciones realizadas
+                    a proyectos open source.</p>
+
+                <div class="proof-placeholder">
+                    <i data-lucide="file-check"></i>
+                    <span data-i18n="proof_coming">Próximamente...</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="destiny-cta">
+            <a href="index.html" class="btn primary" data-i18n="btn_back_donate">Volver y Donar</a>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footer">&copy; 2025 fullstackcurso | RubenSDFA1labernt.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

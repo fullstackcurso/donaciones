@@ -5,10 +5,20 @@
 const App = (() => {
     'use strict';
 
+    // Helper function to check if 24 hours have passed
+    const canSubmitToday = () => {
+        const lastSubmit = localStorage.getItem('form_last_submit');
+        if (!lastSubmit) return true;
+        const lastDate = new Date(lastSubmit);
+        const now = new Date();
+        const diffHours = (now - lastDate) / (1000 * 60 * 60);
+        return diffHours >= 24;
+    };
+
     // State
     const state = {
         lang: 'es',
-        submitted: localStorage.getItem('form_submitted') === 'true'
+        submitted: !canSubmitToday()
     };
 
     // Configuration & Translations
@@ -20,6 +30,7 @@ const App = (() => {
                 page_title: "Donaciones | Apoya estos Proyectos",
                 nav_home: "Inicio",
                 nav_guide: "Guía Solana",
+                nav_destiny: "Destino",
                 nav_projects: "Proyectos",
                 hero_title: "Estos proyectos son posibles <br><span>gracias al apoyo de la comunidad.</span>",
                 hero_desc: "Si algún proyecto te ha resultado útil, puedes invitarme a un café ☕<br>Es una forma de ayudar que me permite dedicar más horas a mis aficiones, además de cubrir costes y seguir manteniendo y mejorando estas herramientas.",
@@ -63,12 +74,42 @@ const App = (() => {
                 alert_sent_already: "Ya has enviado un mensaje.",
                 btn_sending: "Enviando...",
                 success_title: "¡Enviado con éxito!",
-                success_msg: "Gracias por tu apoyo."
+                success_msg: "Gracias por tu apoyo.",
+                btn_destiny: "Ver destino",
+                destiny_page_title: "Destino de los Fondos | Donaciones",
+                destiny_title: "Destino de los <span>Fondos</span>",
+                destiny_subtitle: "Cada aporte cuenta, y aquí puedes ver cómo se usa.",
+                dest_opensource_title: "Proyectos Open Source",
+                dest_opensource_desc: "Parte de las donaciones se destinará a proyectos de código abierto impulsados por la comunidad y sin ánimo de lucro, como Kodi. Sin ellos, muchos de estos proyectos no serían posibles. Se publicarán pruebas de ello.",
+                dest_opensource_extra: "Además de donaciones directas, también se destinará parte a comprar merchandising oficial de estos proyectos (camisetas, tazas, etc.). De esta forma, apoyo su trabajo mientras cubro necesidades básicas como ropa. Dos pájaros de un tiro.",
+                btn_more_details: "Más detalles",
+                dest_opensource_badge: "Open Source",
+                dest_infra_title: "Infraestructura y Costes",
+                dest_infra_desc: "Dominios, hosting, servicios cloud y otras cosas necesarias para mantener los proyectos activos y accesibles.",
+                dest_infra_badge: "Infraestructura",
+                dest_time_title: "Tiempo y Dedicación",
+                dest_time_desc: "Tu café me permite dedicar más horas a desarrollar, mantener y mejorar estas herramientas gratuitas para toda la comunidad. Y con suerte, tener que dedicar menos tiempo a ganar dinero para vivir y más a estos hobbies.",
+                dest_time_badge: "Tiempo",
+                manifesto_title: "Antes de nada, quiero ser claro",
+                manifesto_p1: "Trabajo como autónomo desarrollando aplicaciones y páginas web para empresas. Ese es mi sustento. Estos proyectos personales son mi hobby, no mi negocio.",
+                manifesto_p2: "Durante años he creado herramientas gratuitas, sin publicidad ni ningún tipo de monetización. No pretendo vivir de esto ni hacerme rico con donaciones. En la mayoría de proyectos, las donaciones se pueden contar con los dedos de las manos; en el mejor de los casos, han cubierto los costes de hosting y dominio.",
+                destiny_use_title: "¿En qué se usarán las donaciones?",
+                future_title: "Planes futuros",
+                future_p1: "Se planea crear un foro para dudas y compartir archivos que requerirá una base de datos muy grande y mejor infraestructura.",
+                future_p2: "Si en algún momento hay más colaboradores en el proyecto, los fondos se repartirán de forma justa entre todos.",
+                proof_title: "Capturas y Fotografías",
+                proof_desc: "Próximamente se publicarán aquí los comprobantes de las donaciones realizadas a proyectos open source.",
+                proof_coming: "Próximamente...",
+                thanks_title: "Agradecimientos",
+                thanks_desc: "A todas las personas que han apoyado estos proyectos de alguna forma.",
+                thanks_coming: "Próximamente...",
+                btn_back_donate: "Volver y Donar"
             },
             en: {
                 page_title: "Donations | Support these Projects",
                 nav_home: "Home",
                 nav_guide: "Solana Guide",
+                nav_destiny: "Destiny",
                 nav_projects: "Projects",
                 hero_title: "These projects are made possible <br><span>thanks to community support.</span>",
                 hero_desc: "If any project has been useful to you, you can buy me a coffee ☕<br>Your support helps me dedicate more time to these hobbies, cover costs, and keep maintaining and improving these tools for everyone.",
@@ -112,7 +153,36 @@ const App = (() => {
                 alert_sent_already: "You already sent a message.",
                 btn_sending: "Sending...",
                 success_title: "Sent Successfully!",
-                success_msg: "Thank you for your support."
+                success_msg: "Thank you for your support.",
+                btn_destiny: "See where it goes",
+                destiny_page_title: "Where Funds Go | Donations",
+                destiny_title: "Where Your <span>Funds Go</span>",
+                destiny_subtitle: "Every contribution counts, and here you can see how it's used.",
+                dest_opensource_title: "Open Source Projects",
+                dest_opensource_desc: "Part of the donations will go to community-driven, non-profit open source projects like Kodi. Without them, many of these projects wouldn't be possible. Proof of this will be published.",
+                dest_opensource_extra: "In addition to direct donations, part will also go towards purchasing official merchandise from these projects (t-shirts, mugs, etc.). This way, I support their work while covering basic needs like clothing. Two birds with one stone.",
+                btn_more_details: "More details",
+                dest_opensource_badge: "Open Source",
+                dest_infra_title: "Infrastructure & Costs",
+                dest_infra_desc: "Domains, hosting, cloud services and other things needed to keep projects active and accessible.",
+                dest_infra_badge: "Infrastructure",
+                dest_time_title: "Time & Dedication",
+                dest_time_desc: "Your coffee allows me to dedicate more hours to developing, maintaining and improving these free tools for the entire community. And hopefully, spend less time earning a living and more on these hobbies.",
+                dest_time_badge: "Time",
+                manifesto_title: "First of all, let me be clear",
+                manifesto_p1: "I work as a freelancer developing applications and websites for companies. That's my livelihood. These personal projects are my hobby, not my business.",
+                manifesto_p2: "For years I've created free tools, without ads or any kind of monetization. I don't intend to make a living from this or get rich from donations. In most projects, donations can be counted on the fingers of both hands; at best, they've covered hosting and domain costs.",
+                destiny_use_title: "How will donations be used?",
+                future_title: "Future plans",
+                future_p1: "We plan to create a forum for questions and file sharing that will require a very large database and better infrastructure.",
+                future_p2: "If at some point there are more collaborators on the project, the funds will be distributed fairly among everyone.",
+                proof_title: "Screenshots & Photos",
+                proof_desc: "Receipts of donations made to open source projects will be published here soon.",
+                proof_coming: "Coming soon...",
+                thanks_title: "Acknowledgments",
+                thanks_desc: "To all the people who have supported these projects in some way.",
+                thanks_coming: "Coming soon...",
+                btn_back_donate: "Back to Donate"
             }
         }
     };
@@ -313,7 +383,7 @@ const App = (() => {
 
             if (response.ok) {
                 state.submitted = true;
-                localStorage.setItem('form_submitted', 'true');
+                localStorage.setItem('form_last_submit', new Date().toISOString());
 
                 form.innerHTML = `
                     <div style="text-align: center; padding: 2rem;">
